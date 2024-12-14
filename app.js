@@ -91,6 +91,16 @@ app.listen(3002, () => {
     console.log("App Backend is running at port 3002")
 })
 
+app.get("/", cors(corsOptions), async(req, res) => {
+    const rooms = await client.query(`SELECT EXISTS (
+        SELECT 1
+        FROM pg_tables
+        WHERE schemaname = 'public'
+        )`)
+
+    res.send(rooms)
+})
+
 app.post('/getData', cors(corsOptions), async (req, res) => {
     const {roomId} = req.body
     // res.write(roomId)
