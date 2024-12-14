@@ -4,7 +4,7 @@ const http = require("http")
 const path = require("path")
 const {Server} = require("socket.io")
 const cors = require("cors")
-const client = require("./db")
+const client = require("../db")
 const { createAdapter } = require("@socket.io/postgres-adapter");
 
 const bodyParser = require("body-parser");
